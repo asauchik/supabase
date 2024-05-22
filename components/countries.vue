@@ -50,12 +50,19 @@ onMounted(() => {
 <template>
 
      <div>
-      <UTable :rows="countries" :columns="[ 
+      <UTable 
+      loading
+    :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
+    :progress="{ color: 'primary', animation: 'carousel' }"
+    class="w-full"
+      :rows="countries" :columns="[ 
          { key: 'name', label: 'Country Name' },
   { key: 'abbreviation', label: 'Abbreviation' }
 
 ]"/>
-<div class="flex items-center mb-4" >  <UInput
+<div class="flex items-center mb-4" > 
+  
+  <UInput
       v-model="country_name"
       name="country_name"
       placeholder="Country Name..."
@@ -63,6 +70,7 @@ onMounted(() => {
       autocomplete="off"
       :ui="{ icon: { trailing: { pointer: '' } } }"
       class="flex-grow mr-2"  />
+      
     <UInput
       v-model="abbreviation"
       name="abbreviation"
