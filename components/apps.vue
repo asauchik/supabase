@@ -4,18 +4,18 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient('https://wltvzryjoetvyoearuzj.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsdHZ6cnlqb2V0dnlvZWFydXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyNDI2MTEsImV4cCI6MjAzMTgxODYxMX0.DtHiOIk89aBn9xFSrsYAA0NyJWFAgL-yqlLZKOJh3Fo');
 
-const countries = ref([]);
+const Apps = ref([]);
 const country_name = ref(''); 
 const abbreviation = ref(''); 
 
-async function getCountries() {
+async function getApps() {
   try {
-    const { data, error } = await supabase.from('countries').select();
+    const { data, error } = await supabase.from('Apps').select();
     if (error) throw error;
-    countries.value = data;
-    console.log('countries loaded:', countries.value);
+    Apps.value = data;
+    console.log('countries loaded:', Apps.value);
   } catch (error) {
-    console.error('Error loading applications:', error);
+    console.error('Error loading Apps:', error);
   }
 }
 
@@ -43,7 +43,7 @@ async function insert() {
 }
 
 onMounted(() => {
-  getCountries();
+  getApps();
 });
 </script>
 
@@ -55,9 +55,9 @@ onMounted(() => {
     :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
     :progress="{ color: 'primary', animation: 'carousel' }"
     class="w-full"
-      :rows="countries" :columns="[ 
-         { key: 'name', label: 'Country Name' },
-  { key: 'abbreviation', label: 'Abbreviation' }
+      :rows="Apps" :columns="[ 
+         { key: 'application_number', label: 'Application Number' },
+  { key: 'first_name', label: 'First Name' }
 
 ]"/></Ucontainer>
 

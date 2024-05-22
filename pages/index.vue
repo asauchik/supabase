@@ -1,8 +1,4 @@
-<template><div class="grid grid-cols-3 gap-4">
-  <div></div>
-  <UContainer>
-   <countries />
-     </UContainer>
-
-  <div></div>
-</div></template>
+<template><UContainer class="mx-auto p-4 sm:px-6 lg:px-8 max-w-3xl bg-slate-50 shadow-xl">
+  <apps />
+    </UContainer>
+</template>
